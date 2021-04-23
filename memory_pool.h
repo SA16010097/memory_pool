@@ -4,7 +4,7 @@
 #include<stdint.h>
 #include<iostream>
 
-//一次分配n块地址
+//一次分配n * block_size地址
 #define N_BLOCK 100
 
 //#define ADD_LOCK
