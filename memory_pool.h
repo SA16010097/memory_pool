@@ -63,7 +63,6 @@ public:
             }
         }
         
-        
         auto free_ptr = free_mem_head->ptr;
         free_mem_head = free_mem_head->next;
         return free_ptr; 
