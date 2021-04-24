@@ -61,18 +61,12 @@ public:
                     free_node->next = next_free_node; 
                 } 
             }
+        }
         
-            auto free_ptr = free_mem_head->ptr;
-            free_mem_head = free_mem_head->next;
-            return free_ptr; 
-
-        }
-        else
-        {
-            auto free_ptr = free_mem_head->ptr;
-            free_mem_head = free_mem_head->next;
-            return free_ptr; 
-        }
+        
+        auto free_ptr = free_mem_head->ptr;
+        free_mem_head = free_mem_head->next;
+        return free_ptr; 
     }
 
     void FreeMemory(void* mem)
