@@ -19,12 +19,16 @@ public:
         pool->FreeMemory(p); 
     }
 
+    int size()
+    {
+        return sizeof(*this); 
+    }
 private:
     char s[64];
     static MemoryPool* pool;
 };
 
-MemoryPool* MyClass::pool = MemoryPool::GetMemoryPool(sizeof(MyClass));
+MemoryPool* MyClass::pool = GetMemoryPool(sizeof(MyClass));
 
 int main()
 {
@@ -37,5 +41,6 @@ int main()
         delete b; 
         delete c; 
     }
+    cout << sizeof(MyClass) << endl;
     return true;
 }
