@@ -15,6 +15,7 @@ using namespace std;
 class MemoryPool
 {
 public:
+    MemoryPool() = delete;
     explicit MemoryPool(const size_t block_size):free_mem_head(NULL), m_block_size(block_size){}
     ~MemoryPool(){
         #ifdef ADD_LOCK
