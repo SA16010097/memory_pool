@@ -32,7 +32,7 @@ public:
         #endif 
         if(free_mem_head == NULL)
         {
-            void* mem = malloc((sizeof(void*) * 2 * m_block_size) * N_BLOCK); 
+            void* mem = malloc((sizeof(void*) * 2 + m_block_size) * N_BLOCK); 
             if(mem == NULL)
                 return NULL;
 
