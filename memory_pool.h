@@ -7,6 +7,7 @@
 #include<thread>
 #define N_BLOCK 100
 
+//使用线程私有变量，不需要加锁
 //#define ADD_LOCK
 
 using namespace std;
