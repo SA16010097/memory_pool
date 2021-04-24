@@ -1,4 +1,8 @@
+#include<iostream>
 #include "memory_pool.h"
+
+using namespace std;
+
 class MyClass
 {
 public:
