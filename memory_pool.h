@@ -1,13 +1,14 @@
 #pragma once
 #include<vector>
+#include<map>
 #include<mutex>
 #include<stdint.h>
 #include<iostream>
 
-//一次分配n * block_size地址
+//一次分配n * block_size内存空间
 #define N_BLOCK 100
 
-//#define ADD_LOCK
+#define ADD_LOCK
 
 using namespace std;
 
@@ -25,7 +26,11 @@ public:
 
     static MemoryPool* GetMemoryPool(const size_t s)
     {
-        return new MemoryPool(s); 
+        if(pools.find(s) != pools.end()) 
+            return pools[s];
+        auto ptr = new MemoryPool(s);
+        pools.emplace(s, ptr);
+        return ptr; 
     }
 
     void* AllocMemory()
@@ -91,13 +96,17 @@ private:
         node():ptr(NULL), next(NULL){};
     };
 
+private:
     node* free_mem_head;
     std::vector<void*> mem_allocated; //用于析构释放内存
-
     size_t m_block_size;
+
     #ifdef ADD_LOCK
     std::mutex m_mutex;
     #endif
+
+private:
+    static std::map<size_t, MemoryPool*> pools;
 };
 
-
+std::map<size_t, MemoryPool*> MemoryPool::pools;
