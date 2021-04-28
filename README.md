@@ -9,7 +9,7 @@ C++11内存池
 # To do:
 1. 链表free_memory中的ptr可以去掉，每分配一个对象可减少一个指针分配(4字节或8字节)；
 2. 加锁会严重损失性能，使得内存池的内存分配效率反而降低。考虑使用thread_local或memory_barrier解决，
-3. 如果使用方案为多线程加锁或memory_barrier，如果追求极致的性能，还得考虑false_share的问题。thread_local由于不存在竞争，所以没有类似问题，但是是以空间换时间；
+3. 如果使用方案为多线程加锁或memory_barrier，如果追求极致的性能，还得考虑false_sharing的问题。thread_local由于不存在竞争，所以没有类似问题，但是是以空间换时间；
 4. 如果追求极致的性能，代码中的STL严格来说都有优化方案和替代方案。比如使用std::unordered_map或替代std::map，std::vector可以预分配空间，或者用C自己实现；
 5. 批量分配待实现。
 
