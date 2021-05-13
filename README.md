@@ -37,7 +37,7 @@ user    0m0.150s
 sys     0m0.000s
 
 
-普通分配方式：
+普通分配方式(malloc-free)：
 
 real    0m0.060s
 
