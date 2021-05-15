@@ -1,8 +1,10 @@
 #include<iostream>
+#include<stdio.h>
 #include "memory_pool.h"
 
 using namespace std;
 
+/*使用举例
 class MyClass
 {
 public:
@@ -29,18 +31,20 @@ private:
 };
 
 MemoryPool* MyClass::pool = GetMemoryPool(sizeof(MyClass));
+*/
 
 int main()
 {
+    MemoryPool* pool = GetMemoryPool(64);
     for(int i = 0; i < 1000000; ++i)
     {
-        MyClass* a = new MyClass;
-        MyClass* b = new MyClass;
-        MyClass* c = new MyClass;
-        delete a; 
-        delete b; 
-        delete c; 
+        char* a = (char*)pool->AllocMemory(); 
+        char* b = (char*)pool->AllocMemory(); 
+        char* c = (char*)pool->AllocMemory();
+        //printf("%u %u %u\n", a, b, c); 
+        pool->FreeMemory((void*)a); 
+        pool->FreeMemory((void*)b); 
+        pool->FreeMemory((void*)c); 
     }
-    cout << sizeof(MyClass) << endl;
     return true;
 }
