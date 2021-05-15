@@ -13,7 +13,7 @@ C++11内存池
 4. 可以通过宏CACHE_LINE_ALIGNED配置内存节点是否按照cache_line对齐（使用thread_local实现，实际并不需要这一宏。如果使用memory_barrier实现，可能会用于减少false_sharing）。
 
 # To do:
-5. 批量分配待实现。
+1. 批量分配待实现。
 
 # 性能测试
 目前使用的是多线程加锁，单线程不加锁实现，实测同样的分配逻辑下：
